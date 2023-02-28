@@ -18,6 +18,7 @@ import express from "express"; // not {} because it's not a named export
 import { createServer } from "http";
 import  cors  from "cors";
 import { Server } from "socket.io";
+import fetch from "node-fetch";
 
 const app = express();
 const server = createServer(app);
@@ -33,9 +34,17 @@ io.on('connection', socket => {
   console.log('Client connected');
 
   socket.on('getNumber', () => {
-    const number = Math.floor(Math.random() * 100);
-    console.log(`Generated number: ${number}`);
-    io.emit('number', { number });
+    // const number = Math.floor(Math.random() * 100);
+    // send request to game-logic server
+    fetch('http://localhost:5000/')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        io.emit('number', { number: data.number });
+      })
+
+    // console.log(`Generated number: ${number}`);
+    // io.emit('number', { number });
     // socket emit sends to one client
     // io emit sends to all clients
   });
