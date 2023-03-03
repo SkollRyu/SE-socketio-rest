@@ -15,3 +15,11 @@ This is a showcase of using 2 servers.
 3. `cd game-logic-server` > `flask run` (make sure you pip install flask alr)
 4. `cd ui-server` > `npm install` > `node index.js` (make sure you have node installed, with v16.19.0+)
 5. `cd client` > `npm install` > `npm start` or `npm start --port [port number]`
+
+## Important files
+- Client
+    - /src/App.js - This is where how the page looks like and dynamic re-render when the numbers has been updated
+- UI Server
+    - index.js - This is where I create a server using socketio with the express framework
+- Game Logic Server
+    - app.py - This is where the flask server and route & functions for getting resources
