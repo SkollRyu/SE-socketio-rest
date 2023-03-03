@@ -42,7 +42,6 @@ io.on('connection', socket => {
         console.log(data);
         io.emit('number', { number: data.number });
       })
-
     // console.log(`Generated number: ${number}`);
     // io.emit('number', { number });
     // socket emit sends to one client
